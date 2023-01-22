@@ -1,3 +1,5 @@
+import groovy.json.*
+
 API_KEY_CREDENTIAL_ID = "anun-dev-e2etenant-webhook-secret"
 ANUN_CLI_URL = "https://api.anun-dev.cloud/api/runner/external/get-link"
 VERIFY_SSL = false
