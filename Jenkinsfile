@@ -26,6 +26,7 @@ pipeline {
             }
         }
         stage('Run Anun CLI') {
+          steps {
             script {
                     withCredentials([usernamePassword(credentialsId: API_KEY_CREDENTIAL_ID, passwordVariable: 'ANUN_API_KEY', usernameVariable: 'ANUN_TENANT_ID')]) {
                         final String pythonUserBase = sh(script: "python3 -m site --user-base", returnStdout: true).trim()
@@ -41,6 +42,7 @@ pipeline {
                         }
                     }
                 }
+          }
         }
         stage('Build') {
             steps {
