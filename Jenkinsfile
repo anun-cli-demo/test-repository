@@ -6,7 +6,7 @@ VERIFY_SSL = false
 BUILD_PLATFORM = "jenkins"
 
 INSTANCES = [
-  [ANUN_PLATFORM: "github", CREDENTIAL_ID: "anunDev"]
+  [ANUN_PLATFORM: "github", CREDENTIAL_ID: "githubtoken"]
 ]
 
 pipeline {
