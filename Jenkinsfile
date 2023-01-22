@@ -36,7 +36,7 @@ pipeline {
                                 withEnv(instance.collect { param, arg -> "$param=$arg" }) {
                                     println("Invoking anun-cli...")
                                     String verifySSL = VERIFY_SSL ? "--verify-ssl" : ""
-                                    sh "$anunCli scan-in-build --build-platform $BUILD_PLATFORM $verifySSL"
+                                    sh "$anunCli scan-in-build --build-platform $BUILD_PLATFORM --fail-on-severity low $verifySSL"
                                 }
                             }
                         }
