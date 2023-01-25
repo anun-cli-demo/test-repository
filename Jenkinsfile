@@ -15,6 +15,11 @@ pipeline {
         stage('Gitleaks') {
           steps {
             script {
+              sh '''
+                git clone https://github.com/zricethezav/gitleaks.git && \
+                cd gitleaks && \
+                make build
+              '''
               sh "gitleaks detect --redact --no-git --report-path=gitleaks.json"
             }
           }
