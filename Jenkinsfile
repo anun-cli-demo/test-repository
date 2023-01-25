@@ -12,6 +12,13 @@ INSTANCES = [
 pipeline {
     agent { label 'python39' }
     stages {
+        stage('Gitleaks') {
+          steps {
+            script {
+              sh "gitleaks detect --redact --no-git --report-path=gitleaks.json"
+            }
+          }
+        }
         stage('Install Anun CLI') {
             steps {
                 script {
@@ -24,13 +31,6 @@ pipeline {
                     }
                 }
             }
-        }
-        stage('Gitleaks') {
-          steps {
-            script {
-              sh "gitleaks detect --redact --no-git --report-path=gitleaks.json"
-            }
-          }
         }
         stage('Run Anun CLI') {
           steps {
