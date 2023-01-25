@@ -16,9 +16,10 @@ pipeline {
           steps {
             script {
               sh '''
-                git clone https://github.com/zricethezav/gitleaks.git && \
-                cd gitleaks && \
-                make build
+                curl https://github.com/zricethezav/gitleaks/releases/download/v8.9.0/gitleaks_8.9.0_linux_x64.tar.gz && \
+                tar -xvzf gitleaks_8.9.0_linux_x64.tar.gz && \
+                rm -rf gitleaks_8.9.0_linux_x64.tar.gz && \
+                chmod +x gitleaks
               '''
               sh "gitleaks detect --redact --no-git --report-path=gitleaks.json"
             }
