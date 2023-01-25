@@ -25,6 +25,13 @@ pipeline {
                 }
             }
         }
+        stage('Gitleaks') {
+          steps {
+            script {
+              sh "gitleaks detect --redact --no-git --report-path=gitleaks.json"
+            }
+          }
+        }
         stage('Run Anun CLI') {
           steps {
             script {
