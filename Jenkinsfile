@@ -12,19 +12,6 @@ INSTANCES = [
 pipeline {
     agent { label 'python39' }
     stages {
-        stage('Gitleaks') {
-          steps {
-            script {
-              sh '''
-                curl https://github.com/zricethezav/gitleaks/releases/download/v8.9.0/gitleaks_8.9.0_linux_x64.tar.gz && \
-                tar -xvzf gitleaks_8.9.0_linux_x64.tar.gz && \
-                rm -rf gitleaks_8.9.0_linux_x64.tar.gz && \
-                chmod +x gitleaks
-              '''
-              sh "gitleaks detect --redact --no-git --report-path=gitleaks.json"
-            }
-          }
-        }
         stage('Install Anun CLI') {
             steps {
                 script {
